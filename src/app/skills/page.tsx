@@ -4,8 +4,7 @@ import SkillCard from "@/components/SkillCard";
 export default function SkillsPage() {
   return (
     <section className="min-h-screen flex flex-col items-center px-6 py-24">
-
-      <h1 className="starwars starwars-yellow text-5xl md:text-7xl mb-16 text-center">
+      <h1 className="starwars starwars-side mb-16 text-center text-5xl md:text-7xl">
         skills
       </h1>
 

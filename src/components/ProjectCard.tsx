@@ -12,26 +12,26 @@ export default function ProjectCard({ project }: Props) {
     <motion.div
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
-      className="bg-gray-900 border border-blue-500/20 rounded-xl p-6 shadow-md"
+      className="theme-panel rounded-xl p-6"
     >
-      <h2 className="text-2xl font-semibold text-blue-400">
+      <h2 className="theme-section-title text-2xl font-semibold">
         {project.title}
       </h2>
 
-      <p className="mt-3 text-gray-300">{project.description}</p>
+      <p className="theme-copy mt-3">{project.description}</p>
 
       <div className="mt-4 flex flex-wrap gap-2">
         {project.tech.map((tech) => (
           <span
             key={tech}
-            className="px-3 py-1 text-sm bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/30"
+            className="theme-chip rounded-full px-3 py-1 text-sm"
           >
             {tech}
           </span>
         ))}
       </div>
 
-      <ul className="mt-4 text-gray-400 text-sm list-disc list-inside">
+      <ul className="theme-soft-copy mt-4 list-inside list-disc text-sm">
         {project.highlights.map((point) => (
           <li key={point}>{point}</li>
         ))}
@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: Props) {
         <a
           href={project.github}
           target="_blank"
-          className="inline-block mt-4 text-blue-400 hover:underline"
+          className="theme-link mt-4 inline-block"
         >
           View on GitHub →
         </a>

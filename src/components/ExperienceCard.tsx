@@ -21,19 +21,19 @@ export default function ExperienceCard({
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="bg-gray-900 border border-blue-500/20 rounded-xl p-6"
+      className="theme-panel rounded-xl p-6"
     >
-      <h2 className="text-xl font-semibold text-blue-400">
+      <h2 className="theme-section-title text-xl font-semibold">
         {role}
       </h2>
 
-      <p className="text-gray-300 mt-1">
+      <p className="theme-copy mt-1">
         {organization} — {location}
       </p>
 
-      <p className="text-gray-500 text-sm mt-1">{period}</p>
+      <p className="theme-soft-copy mt-1 text-sm">{period}</p>
 
-      <ul className="mt-4 list-disc list-inside text-gray-400 space-y-1">
+      <ul className="theme-soft-copy mt-4 list-inside list-disc space-y-1">
         {bullets.map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}

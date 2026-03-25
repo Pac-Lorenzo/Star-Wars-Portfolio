@@ -24,7 +24,7 @@ export default function SkillCircle({
 
   return (
     <div
-      className="group flex flex-col items-center gap-2 transition-transform duration-300 hover:scale-110"
+      className="group flex flex-col items-center gap-2 rounded-2xl border border-[rgb(var(--accent)/0.12)] bg-[rgb(var(--panel-strong)/0.4)] px-4 py-5 transition-all duration-300 hover:scale-105 hover:border-[var(--skill-color)] hover:shadow-[0_0_26px_var(--skill-color)]"
       style={{ "--skill-color": color } as CSSProperties}
     >
       <div className="relative w-24 h-24">
@@ -36,7 +36,7 @@ export default function SkillCircle({
         >
           {/* Background circle */}
           <circle
-            stroke="rgba(255,255,255,0.1)"
+            stroke="rgb(var(--accent) / 0.12)"
             fill="transparent"
             strokeWidth={stroke}
             r={normalizedRadius}
@@ -74,8 +74,8 @@ export default function SkillCircle({
         </div>
       </div>
 
-      <p className="text-white text-sm">{label}</p>
-      <p className="text-gray-400 text-sm">{percentage}%</p>
+      <p className="text-sm">{label}</p>
+      <p className="theme-accent text-sm opacity-70">{percentage}%</p>
     </div>
   );
 }

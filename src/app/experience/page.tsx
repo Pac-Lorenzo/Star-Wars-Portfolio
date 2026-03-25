@@ -4,7 +4,7 @@ import ExperienceCard from "@/components/ExperienceCard";
 export default function ExperiencePage() {
   return (
     <section className="min-h-screen">
-      <h1 className="text-4xl font-bold text-blue-400 mb-12">
+      <h1 className="theme-section-title mb-12 text-4xl font-bold">
         Experience
       </h1>
 
@@ -15,11 +15,11 @@ export default function ExperiencePage() {
       </div>
 
       <div className="mt-16">
-        <h2 className="text-3xl font-semibold text-blue-400 mb-6">
+        <h2 className="theme-section-title mb-6 text-3xl font-semibold">
           Leadership & Involvement
         </h2>
 
-        <ul className="text-gray-300 space-y-2">
+        <ul className="theme-copy space-y-2">
           <li>Tau Beta Pi Honor Society</li>
           <li>Institute of Electrical and Electronics Engineers (IEEE)</li>
           <li>Society of Hispanic Professional Engineers (SHPE)</li>

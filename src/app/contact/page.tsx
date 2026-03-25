@@ -1,11 +1,11 @@
 export default function ContactPage() {
   return (
     <section className="min-h-screen">
-      <h1 className="text-4xl font-bold text-blue-400 mb-12">
+      <h1 className="theme-section-title mb-12 text-4xl font-bold">
         Contact
       </h1>
 
-      <div className="space-y-6 text-gray-300 text-lg">
+      <div className="theme-copy space-y-6 text-lg">
         <p>
           Interested in collaborating or discussing opportunities?
           Feel free to reach out.
@@ -16,7 +16,7 @@ export default function ContactPage() {
             📧 Email:{" "}
             <a
               href="mailto:pacochelorenzo@gmail.com"
-              className="text-blue-400 hover:underline"
+              className="theme-link"
             >
               pacochelorenzo@gmail.com
             </a>
@@ -27,7 +27,7 @@ export default function ContactPage() {
             <a
               href="https://www.linkedin.com/in/pacolorenzo17/"
               target="_blank"
-              className="text-blue-400 hover:underline"
+              className="theme-link"
             >
               linkedin.com/in/pacolorenzo17
             </a>
@@ -38,7 +38,7 @@ export default function ContactPage() {
             <a
               href="https://github.com/Pac-Lorenzo"
               target="_blank"
-              className="text-blue-400 hover:underline"
+              className="theme-link"
             >
               github.com/Pac-Lorenzo
             </a>
@@ -49,7 +49,7 @@ export default function ContactPage() {
           <a
             href="/resume.pdf"
             download
-            className="inline-block px-6 py-3 bg-blue-500/20 border border-blue-500/40 text-blue-400 rounded-lg hover:bg-blue-500/30 transition"
+            className="theme-button-primary inline-block rounded-lg px-6 py-3"
           >
             Download Resume
           </a>

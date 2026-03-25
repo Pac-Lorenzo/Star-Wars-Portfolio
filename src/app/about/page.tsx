@@ -7,11 +7,11 @@ export default function AboutPage() {
 
         {/* LEFT SIDE - TEXT */}
         <div>
-          <h1 className="text-4xl font-bold text-blue-400 mb-8">
+          <h1 className="theme-section-title mb-8 text-4xl font-bold">
             About Me
           </h1>
 
-          <div className="space-y-6 text-gray-300 text-lg max-w-xl">
+          <div className="theme-copy max-w-xl space-y-6 text-lg">
             <p>
               I am a Computer Engineering student at Villanova University
               focused on building scalable cloud systems and secure
@@ -39,7 +39,7 @@ export default function AboutPage() {
 
         {/* RIGHT SIDE - GLOBE */}
         <div className="flex justify-center items-center relative">
-          <div className="absolute w-[420px] h-[420px] bg-blue-500/20 blur-3xl rounded-full" />
+          <div className="theme-orb absolute h-[420px] w-[420px] rounded-full blur-3xl" />
           <GlobeWrapper />
         </div>
 
