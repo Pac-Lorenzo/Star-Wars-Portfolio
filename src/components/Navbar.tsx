@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-      <div className="flex gap-6 bg-black/70 backdrop-blur-md px-8 py-3 rounded-full border border-blue-500/30">
+      <div className="theme-nav-shell flex items-center gap-3 rounded-full px-4 py-3 sm:gap-6 sm:px-8">
         {links.map((link) => {
           const active = pathname === link.path;
 
@@ -27,8 +27,8 @@ export default function Navbar() {
               href={link.path}
               className={`transition-all duration-300 ${
                 active
-                  ? "text-blue-400 font-semibold"
-                  : "text-gray-300 hover:text-blue-400"
+                  ? "theme-accent font-semibold"
+                  : "theme-nav-link"
               }`}
             >
               {link.name}

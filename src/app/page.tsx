@@ -1,21 +1,32 @@
+import TypewriterText from "@/components/TypewriterText";
+
 export default function Home() {
   return (
     <section className="min-h-screen flex flex-col justify-center gap-5">
-      <h1 className="starwars-yellow text-[2.3rem] leading-[0.92] sm:text-6xl md:text-7xl">
-        FRANCISCO
+      <h1 className="starwars starwars-side text-[2.3rem] leading-[0.92] sm:text-6xl md:text-7xl">
+        francisco
         <br />
-        LORENZO
+        lorenzo
       </h1>
 
-      <p className="hero-serif text-3xl sm:text-4xl text-gray-100">
+      <p className="hero-serif text-3xl sm:text-4xl">
         Hi, I&apos;m <span className="hero-name-glow font-semibold">Francisco</span>
       </p>
 
-      <h2 className="starwars-blue text-[2rem] leading-none sm:text-5xl md:text-6xl">
-        SOFTWARE ENGINEER
+      <h2 className="theme-accent min-h-[2.5rem] text-[1.75rem] font-semibold tracking-[0.18em] sm:min-h-[3.5rem] sm:text-4xl md:min-h-[4rem] md:text-5xl">
+        <TypewriterText
+          className="starwars starwars-side"
+          options={{
+            strings: ["web developer", "software engineer", "ai trainer"],
+            delay: 50,
+            deleteSpeed: 30,
+            loop: true,
+            autoStart: true,
+          }}
+        />
       </h2>
 
-      <p className="max-w-xl text-gray-300">
+      <p className="theme-copy max-w-xl">
         Building scalable cloud systems, secure architectures,
         and data-driven applications.
       </p>
@@ -23,7 +34,7 @@ export default function Home() {
       <div className="mt-4 flex gap-4">
         <a
           href="/projects"
-          className="px-6 py-3 bg-blue-500/20 border border-blue-500/40 text-blue-400 rounded-lg hover:bg-blue-500/30 transition"
+          className="theme-button-primary rounded-lg px-6 py-3"
         >
           View Projects
         </a>
@@ -31,7 +42,7 @@ export default function Home() {
         <a
           href="/resume.pdf"
           download
-          className="px-6 py-3 border border-gray-600 rounded-lg hover:border-blue-400 transition"
+          className="theme-button-secondary rounded-lg px-6 py-3"
         >
           Download Resume
         </a>

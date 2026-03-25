@@ -1,22 +1,163 @@
 @import "tailwindcss";
 
+/* Theme tokens.
+   We keep just one small palette per mode: page background, panel background,
+   main text, softer text, and one accent color. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 5 5 7;
+  --background-soft: 20 10 12;
+  --panel: 15 9 11;
+  --panel-strong: 8 6 7;
+  --shadow: 0 0 0;
+  --text: 244 244 245;
+  --muted: 209 213 219;
+  --muted-soft: 148 163 184;
+  --accent: 239 68 68;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--text));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Light Side swaps only the palette values. */
+html[data-theme="light-side"] {
+  --background: 234 216 172;
+  --background-soft: 247 239 214;
+  --panel: 247 238 214;
+  --panel-strong: 232 219 186;
+  --shadow: 130 101 53;
+  --text: 42 34 24;
+  --muted: 92 73 50;
+  --muted-soft: 120 104 83;
+  --accent: 37 99 235;
+  color-scheme: light;
+}
+
+/* Base page background and text color for both themes. */
+body {
+  min-height: 100vh;
+  color: rgb(var(--text));
+  background-color: rgb(var(--background));
+  background-image:
+    radial-gradient(circle at top, rgb(var(--accent) / 0.12), transparent 30%),
+    linear-gradient(180deg, rgb(var(--background-soft)), rgb(var(--background)));
+  transition: all 0.3s ease;
+}
+
+/* Simple text helpers so pages do not need hardcoded gray/blue classes. */
+.theme-copy {
+  color: rgb(var(--muted));
+}
+
+.theme-soft-copy {
+  color: rgb(var(--muted-soft));
+}
+
+.theme-accent {
+  color: rgb(var(--accent));
+}
+
+/* Section titles use the accent color with a small glow. */
+.theme-section-title {
+  color: rgb(var(--accent));
+  text-shadow: 0 0 18px rgb(var(--accent) / 0.18);
+}
+
+/* Links stay simple: accent by default, underline on hover. */
+.theme-link {
+  color: rgb(var(--accent));
+  transition: text-shadow 0.2s ease;
+}
+
+.theme-link:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 12px rgb(var(--accent) / 0.22);
+}
+
+/* Shared button styles used across the site. */
+.theme-button-primary {
+  background: rgb(var(--accent) / 0.12);
+  border: 1px solid rgb(var(--accent) / 0.35);
+  color: rgb(var(--accent));
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.theme-button-primary:hover {
+  background: rgb(var(--accent) / 0.18);
+  border-color: rgb(var(--accent) / 0.5);
+  transform: translateY(-1px);
+}
+
+.theme-button-secondary {
+  background: rgb(var(--panel) / 0.24);
+  border: 1px solid rgb(var(--text) / 0.18);
+  color: rgb(var(--text) / 0.92);
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.theme-button-secondary:hover {
+  border-color: rgb(var(--accent) / 0.4);
+  color: rgb(var(--accent));
+  transform: translateY(-1px);
+}
+
+/* Shared card surface for projects, experience, and skills. */
+.theme-panel {
+  background:
+    linear-gradient(180deg, rgb(var(--panel) / 0.94), rgb(var(--panel-strong) / 0.9));
+  border: 1px solid rgb(var(--accent) / 0.22);
+  box-shadow:
+    0 0 0 1px rgb(var(--accent) / 0.06),
+    0 20px 60px rgb(var(--shadow) / 0.14);
+  backdrop-filter: blur(12px);
+}
+
+.theme-chip {
+  background: rgb(var(--accent) / 0.1);
+  border: 1px solid rgb(var(--accent) / 0.24);
+  color: rgb(var(--accent));
+}
+
+/* Navbar shell + links reuse the same accent logic. */
+.theme-nav-shell {
+  background: rgb(var(--panel-strong) / 0.78);
+  border: 1px solid rgb(var(--accent) / 0.24);
+  box-shadow:
+    0 0 0 1px rgb(var(--accent) / 0.04),
+    0 16px 42px rgb(var(--shadow) / 0.16);
+  backdrop-filter: blur(14px);
+}
+
+.theme-nav-link {
+  color: rgb(var(--muted));
+  transition: color 0.25s ease;
+}
+
+.theme-nav-link:hover {
+  color: rgb(var(--accent));
+}
+/* Toggle icons keep their neon color regardless of the active theme. */
+.theme-toggle-icon-light {
+  filter:
+    brightness(0) saturate(100%) invert(33%) sepia(90%) saturate(1406%) hue-rotate(204deg) brightness(97%) contrast(92%)
+    drop-shadow(0 0 4px rgb(59 130 246 / 0.9))
+    drop-shadow(0 0 10px rgb(59 130 246 / 0.65));
+}
+
+.theme-toggle-icon-dark {
+  filter:
+    brightness(0) saturate(100%) invert(18%) sepia(92%) saturate(3167%) hue-rotate(349deg) brightness(101%) contrast(98%)
+    drop-shadow(0 0 4px rgb(239 68 68 / 0.9))
+    drop-shadow(0 0 10px rgb(239 68 68 / 0.65));
+}
+
+/* Used for the soft glow behind the About globe and skill cards. */
+.theme-orb {
+  background: rgb(var(--accent) / 0.16);
 }
 
 @font-face {
@@ -26,34 +167,44 @@
   font-style: normal;
 }
 
-/* Base Star Wars styling */
+/* Base Star Wars font helper. */
 .starwars {
   font-family: "StarJediHollow", sans-serif !important;
   letter-spacing: 0.14em;
 }
 
-
-/* Color variants*/
-.starwars-yellow {
-  color: #facc15;
+/* Accent-colored Star Wars glow used for major headings. */
+.starwars-side {
+  color: rgb(var(--accent));
   text-shadow:
-    0 0 4px rgba(250, 204, 21, 0.9),
-    0 0 12px rgba(250, 204, 21, 0.8),
-    0 0 30px rgba(250, 204, 21, 0.6),
-    0 0 60px rgba(250, 204, 21, 0.4);
+    0 0 6px rgb(var(--accent) / 0.9),
+    0 0 18px rgb(var(--accent) / 0.7),
+    0 0 40px rgb(var(--accent) / 0.45);
 }
 
-.starwars-blue {
-  color: #3b82f6;
-  text-shadow:
-    0 0 6px rgba(59, 130, 246, 0.9),
-    0 0 18px rgba(59, 130, 246, 0.7),
-    0 0 40px rgba(59, 130, 246, 0.5);
+/* Typewriter library classes.
+   The wrapper is minimal; the cursor inherits the active theme accent. */
+.typewriter-wrapper {
+  display: inline-block;
 }
 
-.starwars-white {
-  color: #ffffff;
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 0em;
+  font-size: 1.3em;
+  font-family: var(--font-mono), monospace;
+  line-height: 1;
+  vertical-align: baseline;
+  color: rgb(var(--accent));
   text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.8),
-    0 0 18px rgba(255, 255, 255, 0.5);
+    0 0 6px rgb(var(--accent) / 0.9),
+    0 0 18px rgb(var(--accent) / 0.7),
+    0 0 36px rgb(var(--accent) / 0.45);
+  animation: typewriter-cursor-blink 1s step-end infinite;
+}
+
+@keyframes typewriter-cursor-blink {
+  50% {
+    opacity: 0;
+  }
 }
