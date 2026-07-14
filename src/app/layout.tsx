@@ -30,7 +30,7 @@ export default function RootLayout({
         />
         <ThemeToggle />
         <Navbar />
-        <main className="px-6 md:px-20 pt-24">
+        <main className="px-6 pt-28 md:px-20 md:pt-24">
           {children}
         </main>
       </body>

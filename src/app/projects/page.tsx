@@ -1,14 +1,13 @@
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function ProjectsPage() {
   return (
-    <section className="min-h-screen">
-      <h1 className="starwars starwars-side text-7xl md:text-9xl">
-        projects
-      </h1>
+    <section className="page-section page-container">
+      <SectionHeader title="projects" eyebrow="Selected Work" />
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid gap-8 md:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}

@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
-/* Theme tokens.
-   We keep just one small palette per mode: page background, panel background,
+/* ==========================================================================
+   Theme Tokens
+   ========================================================================== */
+
+/* We keep one compact palette per mode: page background, panel background,
    main text, softer text, and one accent color. */
 :root {
   --background: 5 5 7;
@@ -23,7 +26,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Light Side swaps only the palette values. */
+/* Light side swaps only the token values. */
 html[data-theme="light-side"] {
   --background: 234 216 172;
   --background-soft: 247 239 214;
@@ -37,7 +40,10 @@ html[data-theme="light-side"] {
   color-scheme: light;
 }
 
-/* Base page background and text color for both themes. */
+/* ==========================================================================
+   Base Page
+   ========================================================================== */
+
 body {
   min-height: 100vh;
   color: rgb(var(--text));
@@ -48,7 +54,37 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Simple text helpers so pages do not need hardcoded gray/blue classes. */
+/* ==========================================================================
+   Layout Helpers
+   ========================================================================== */
+
+.page-section {
+  min-height: 100vh;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+.page-copy {
+  max-width: 36rem;
+  font-size: 1.125rem;
+  color: rgb(var(--muted));
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Content + Typography Helpers
+   ========================================================================== */
+
 .theme-copy {
   color: rgb(var(--muted));
 }
@@ -61,13 +97,11 @@ body {
   color: rgb(var(--accent));
 }
 
-/* Section titles use the accent color with a small glow. */
 .theme-section-title {
   color: rgb(var(--accent));
   text-shadow: 0 0 18px rgb(var(--accent) / 0.18);
 }
 
-/* Links stay simple: accent by default, underline on hover. */
 .theme-link {
   color: rgb(var(--accent));
   transition: text-shadow 0.2s ease;
@@ -78,7 +112,55 @@ body {
   text-shadow: 0 0 12px rgb(var(--accent) / 0.22);
 }
 
-/* Shared button styles used across the site. */
+.hero-heading {
+  font-size: 2.3rem;
+  line-height: 0.92;
+}
+
+.hero-type-line {
+  min-height: 2.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgb(var(--accent));
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-header-eyebrow {
+  color: rgb(var(--accent));
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+}
+
+.section-header-title {
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  line-height: 0.95;
+}
+
+.section-subheading {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Reusable Component Shells
+   ========================================================================== */
+
+.theme-button {
+  display: inline-block;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
 .theme-button-primary {
   background: rgb(var(--accent) / 0.12);
   border: 1px solid rgb(var(--accent) / 0.35);
@@ -105,7 +187,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Shared card surface for projects, experience, and skills. */
 .theme-panel {
   background:
     linear-gradient(180deg, rgb(var(--panel) / 0.94), rgb(var(--panel-strong) / 0.9));
@@ -116,13 +197,22 @@ body {
   backdrop-filter: blur(12px);
 }
 
+.theme-card {
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
 .theme-chip {
   background: rgb(var(--accent) / 0.1);
   border: 1px solid rgb(var(--accent) / 0.24);
   color: rgb(var(--accent));
 }
 
-/* Navbar shell + links reuse the same accent logic. */
+.theme-chip-pill {
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+}
+
 .theme-nav-shell {
   background: rgb(var(--panel-strong) / 0.78);
   border: 1px solid rgb(var(--accent) / 0.24);
@@ -140,7 +230,34 @@ body {
 .theme-nav-link:hover {
   color: rgb(var(--accent));
 }
-/* Toggle icons keep their neon color regardless of the active theme. */
+
+.theme-orb {
+  background: rgb(var(--accent) / 0.16);
+}
+
+/* ==========================================================================
+   Brand Font + Effects
+   ========================================================================== */
+
+@font-face {
+  font-family: "StarJediHollow";
+  src: url("/fonts/Starjhol.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.starwars {
+  font-family: "StarJediHollow", sans-serif !important;
+}
+
+.starwars-side {
+  color: rgb(var(--accent));
+  text-shadow:
+    0 0 6px rgb(var(--accent) / 0.9),
+    0 0 18px rgb(var(--accent) / 0.7),
+    0 0 40px rgb(var(--accent) / 0.45);
+}
+
 .theme-toggle-icon-light {
   filter:
     brightness(0) saturate(100%) invert(33%) sepia(90%) saturate(1406%) hue-rotate(204deg) brightness(97%) contrast(92%)
@@ -155,35 +272,36 @@ body {
     drop-shadow(0 0 10px rgb(239 68 68 / 0.65));
 }
 
-/* Used for the soft glow behind the About globe and skill cards. */
-.theme-orb {
-  background: rgb(var(--accent) / 0.16);
+/* ==========================================================================
+   Responsive Type
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .hero-heading {
+    font-size: 3.75rem;
+  }
+
+  .hero-type-line {
+    min-height: 3.5rem;
+    font-size: 2.25rem;
+  }
 }
 
-@font-face {
-  font-family: "StarJediHollow";
-  src: url("/fonts/starjhol.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+@media (min-width: 768px) {
+  .hero-heading {
+    font-size: 4.5rem;
+  }
+
+  .hero-type-line {
+    min-height: 4rem;
+    font-size: 3rem;
+  }
 }
 
-/* Base Star Wars font helper. */
-.starwars {
-  font-family: "StarJediHollow", sans-serif !important;
-  letter-spacing: 0.14em;
-}
+/* ==========================================================================
+   Typewriter Effect
+   ========================================================================== */
 
-/* Accent-colored Star Wars glow used for major headings. */
-.starwars-side {
-  color: rgb(var(--accent));
-  text-shadow:
-    0 0 6px rgb(var(--accent) / 0.9),
-    0 0 18px rgb(var(--accent) / 0.7),
-    0 0 40px rgb(var(--accent) / 0.45);
-}
-
-/* Typewriter library classes.
-   The wrapper is minimal; the cursor inherits the active theme accent. */
 .typewriter-wrapper {
   display: inline-block;
 }

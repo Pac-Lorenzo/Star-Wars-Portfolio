@@ -12,7 +12,7 @@ export default function ProjectCard({ project }: Props) {
     <motion.div
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
-      className="theme-panel rounded-xl p-6"
+      className="theme-panel theme-card"
     >
       <h2 className="theme-section-title text-2xl font-semibold">
         {project.title}
@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: Props) {
         {project.tech.map((tech) => (
           <span
             key={tech}
-            className="theme-chip rounded-full px-3 py-1 text-sm"
+            className="theme-chip theme-chip-pill text-sm"
           >
             {tech}
           </span>
@@ -41,6 +41,7 @@ export default function ProjectCard({ project }: Props) {
         <a
           href={project.github}
           target="_blank"
+          rel="noreferrer"
           className="theme-link mt-4 inline-block"
         >
           View on GitHub →

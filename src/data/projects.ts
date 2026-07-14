@@ -18,7 +18,6 @@ export const projects: Project[] = [
       "Implemented stateless JWT authentication",
       "Integrated AI-generated workout insights",
     ],
-    github: "https://github.com/yourusername/atlaslog",
   },
   {
     title: "Peak Summit Capital Platform",

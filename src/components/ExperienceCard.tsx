@@ -21,7 +21,7 @@ export default function ExperienceCard({
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="theme-panel rounded-xl p-6"
+      className="theme-panel theme-card"
     >
       <h2 className="theme-section-title text-xl font-semibold">
         {role}

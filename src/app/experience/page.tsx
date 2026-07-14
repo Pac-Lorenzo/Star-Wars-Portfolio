@@ -1,12 +1,11 @@
 import { experiences } from "@/data/experience";
 import ExperienceCard from "@/components/ExperienceCard";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function ExperiencePage() {
   return (
-    <section className="min-h-screen">
-      <h1 className="theme-section-title mb-12 text-4xl font-bold">
-        Experience
-      </h1>
+    <section className="page-section page-container">
+      <SectionHeader title="experience" eyebrow="Work History" />
 
       <div className="space-y-8">
         {experiences.map((exp) => (
@@ -15,7 +14,7 @@ export default function ExperiencePage() {
       </div>
 
       <div className="mt-16">
-        <h2 className="theme-section-title mb-6 text-3xl font-semibold">
+        <h2 className="section-subheading theme-section-title">
           Leadership & Involvement
         </h2>
 

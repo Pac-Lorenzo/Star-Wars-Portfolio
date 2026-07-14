@@ -1,11 +1,11 @@
+import SectionHeader from "@/components/SectionHeader";
+
 export default function ContactPage() {
   return (
-    <section className="min-h-screen">
-      <h1 className="theme-section-title mb-12 text-4xl font-bold">
-        Contact
-      </h1>
+    <section className="page-section page-container">
+      <SectionHeader title="contact" eyebrow="Reach Out" />
 
-      <div className="theme-copy space-y-6 text-lg">
+      <div className="page-copy space-y-6">
         <p>
           Interested in collaborating or discussing opportunities?
           Feel free to reach out.
@@ -27,6 +27,7 @@ export default function ContactPage() {
             <a
               href="https://www.linkedin.com/in/pacolorenzo17/"
               target="_blank"
+              rel="noreferrer"
               className="theme-link"
             >
               linkedin.com/in/pacolorenzo17
@@ -38,6 +39,7 @@ export default function ContactPage() {
             <a
               href="https://github.com/Pac-Lorenzo"
               target="_blank"
+              rel="noreferrer"
               className="theme-link"
             >
               github.com/Pac-Lorenzo
@@ -47,11 +49,12 @@ export default function ContactPage() {
 
         <div className="mt-8">
           <a
-            href="/resume.pdf"
-            download
-            className="theme-button-primary inline-block rounded-lg px-6 py-3"
+            href="/Francisco_Lorenzo_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="theme-button theme-button-primary"
           >
-            Download Resume
+            View Resume
           </a>
         </div>
       </div>

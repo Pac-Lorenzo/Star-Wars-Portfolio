@@ -1,17 +1,16 @@
 import GlobeWrapper from "@/components/GlobeWrapper";
+import SectionHeader from "@/components/SectionHeader";
 
 export default function AboutPage() {
   return (
-    <section className="min-h-screen flex items-center">
-      <div className="grid md:grid-cols-2 gap-12 w-full">
+    <section className="page-section flex items-center">
+      <div className="page-container grid w-full gap-12 md:grid-cols-2">
 
         {/* LEFT SIDE - TEXT */}
         <div>
-          <h1 className="theme-section-title mb-8 text-4xl font-bold">
-            About Me
-          </h1>
+          <SectionHeader title="about me" eyebrow="Overview" />
 
-          <div className="theme-copy max-w-xl space-y-6 text-lg">
+          <div className="page-copy space-y-6">
             <p>
               I am a Computer Engineering student at Villanova University
               focused on building scalable cloud systems and secure
@@ -38,7 +37,7 @@ export default function AboutPage() {
         </div>
 
         {/* RIGHT SIDE - GLOBE */}
-        <div className="flex justify-center items-center relative">
+        <div className="relative flex items-center justify-center">
           <div className="theme-orb absolute h-[420px] w-[420px] rounded-full blur-3xl" />
           <GlobeWrapper />
         </div>

@@ -1,68 +1,39 @@
 "use client";
 
 import Image from "next/image";
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 type ThemeName = "dark-side" | "light-side";
 
-const THEME_EVENT = "themechange";
-
-function getThemeSnapshot(): ThemeName {
-  if (
-    typeof document !== "undefined" &&
-    document.documentElement.dataset.theme === "light-side"
-  ) {
-    return "light-side";
-  }
-
-  return "dark-side";
-}
-
-function getServerThemeSnapshot(): ThemeName {
-  return "dark-side";
-}
-
-function subscribe(callback: () => void) {
-  if (typeof window === "undefined") {
-    return () => {};
-  }
-
-  const handleChange = () => callback();
-
-  window.addEventListener(THEME_EVENT, handleChange);
-  window.addEventListener("storage", handleChange);
-
-  return () => {
-    window.removeEventListener(THEME_EVENT, handleChange);
-    window.removeEventListener("storage", handleChange);
-  };
-}
-
 export default function ThemeToggle() {
-  const theme = useSyncExternalStore(
-    subscribe,
-    getThemeSnapshot,
-    getServerThemeSnapshot,
-  );
-
-  const nextTheme = theme === "dark-side" ? "light-side" : "dark-side";
-
-  const setTheme = (themeName: ThemeName) => {
-    if (themeName === theme) {
-      return;
+  const [theme, setTheme] = useState<ThemeName>(() => {
+    if (typeof window === "undefined") {
+      return "dark-side";
     }
 
-    
-    document.documentElement.dataset.theme = themeName;
-    localStorage.setItem("theme", themeName);
-    window.dispatchEvent(new Event(THEME_EVENT));
-  };
+    try {
+      const savedTheme = localStorage.getItem("theme");
+      return savedTheme === "light-side" ? "light-side" : "dark-side";
+    } catch {
+      return "dark-side";
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {}
+  }, [theme]);
+
+  const nextTheme = theme === "dark-side" ? "light-side" : "dark-side";
 
   return (
     <button
       type="button"
       onClick={() => setTheme(nextTheme)}
-      className="group fixed top-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full border border-[rgb(var(--accent)/0.24)] bg-[rgb(var(--panel-strong)/0.82)] shadow-[0_16px_42px_rgb(var(--shadow)/0.16)] backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_22px_rgb(var(--accent)/0.16),0_16px_42px_rgb(var(--shadow)/0.2)]"
+      className="group fixed top-6 right-6 z-[60] grid h-14 w-14 place-items-center rounded-full border border-[rgb(var(--accent)/0.24)] bg-[rgb(var(--panel-strong)/0.82)] shadow-[0_16px_42px_rgb(var(--shadow)/0.16)] backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-[rgb(var(--accent)/0.45)] hover:shadow-[0_0_22px_rgb(var(--accent)/0.16),0_16px_42px_rgb(var(--shadow)/0.2)]"
       aria-label={`Switch to ${nextTheme === "light-side" ? "Light Side" : "Dark Side"} theme`}
       aria-pressed={theme === "light-side"}
     >
@@ -70,7 +41,7 @@ export default function ThemeToggle() {
         {theme === "light-side" ? "Light Side active" : "Dark Side active"}
       </span>
 
-      <span className="transition-opacity duration-200 group-hover:opacity-0" aria-hidden="true">
+      <span className="pointer-events-none transition-opacity duration-200 group-hover:opacity-0" aria-hidden="true">
         {theme === "light-side" ? (
           <Image
             src="/jedi.svg"
