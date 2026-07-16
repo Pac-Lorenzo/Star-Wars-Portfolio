@@ -15,7 +15,7 @@ export default function ExperiencePage() {
 
       <div className="mt-16">
         <h2 className="section-subheading theme-section-title">
-          Leadership & Involvement
+          Memberships
         </h2>
 
         <ul className="theme-copy space-y-2">
